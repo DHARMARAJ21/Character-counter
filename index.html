@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Character Counter</title>
+    <style>
+        body {
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2199%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient2200%26quot%3b)'%3e%3c/rect%3e%3cpath d='M635 136L921 422' stroke-width='8' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M355 491L-4 132' stroke-width='8' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M694 374L890 570' stroke-width='8' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M1304 465L1670 831' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M814 343L488 17' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M89 323L-320 -86' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M529 370L892 733' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M317 227L-2 -92' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M824 451L579 206' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M1393 489L1209 305' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M739 38L1043 342' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M1315 451L1008 144' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M445 552L852 959' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M1351 268L1565 482' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M643 311L321 -11' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M131 276L-235 -90' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M13 484L-350 121' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M245 87L459 301' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M713 423L330 40' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M304 357L703 756' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M737 81L541 -115' stroke-width='8' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M275 17L54 -204' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M1161 190L1366 395' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M1435 344L1802 711' stroke-width='8' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M535 67L832 364' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M1310 28L1722 440' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M160 213L-84 -31' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M237 531L400 694' stroke-width='8' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M256 45L66 -145' stroke-width='8' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M285 263L467 445' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M1104 178L1443 517' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M578 441L421 284' stroke-width='8' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M926 74L752 -100' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M243 126L72 -45' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M346 519L137 310' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M741 156L993 408' stroke-width='8' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M897 132L1113 348' stroke-width='6' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3cpath d='M609 542L989 922' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2201%26quot%3b)' stroke-linecap='round' class='TopLeft'%3e%3c/path%3e%3cpath d='M159 89L-186 -256' stroke-width='10' stroke='url(%26quot%3b%23SvgjsLinearGradient2202%26quot%3b)' stroke-linecap='round' class='BottomRight'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2199'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='84.72%25' y1='139.29%25' x2='15.28%25' y2='-39.29%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2200'%3e%3cstop stop-color='%230e2a47' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(181%2c 71%2c 71%2c 1)' offset='0.58'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='100%25' y1='100%25' x2='0%25' y2='0%25' id='SvgjsLinearGradient2201'%3e%3cstop stop-color='rgba(221%2c 203%2c 50%2c 0)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(221%2c 203%2c 50%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3clinearGradient x1='0%25' y1='0%25' x2='100%25' y2='100%25' id='SvgjsLinearGradient2202'%3e%3cstop stop-color='rgba(221%2c 203%2c 50%2c 0)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(221%2c 203%2c 50%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+            background-size: cover;
+        }
+        .counter-container {
+            background-color: #ffccd5;
+            border-radius: 10px;
+            padding: 20px 20px;
+            /* text-align: center; */
+            width: 700px;
+            height: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .counter-container h2{
+            font-size: 30px;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            border: 3px solid black;
+            border-radius: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .count-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 26px;
+            margin-top: 10px;
+        }
+        #myInput{
+            width: 100%;
+            height: 250px;
+            font-size: 20px;
+        }
+        #charCount{
+            color: rgb(196, 60, 196);
+            font-size: 30px;
+        }
+        #charRemaining{
+            color:  #a33144;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="counter-container">
+    <h2>Real-time Character Counter</h2>
+    <textarea id="myInput" oninput="countCharacters()" placeholder="Please write your text here..."></textarea>
+    <div class="count-display">
+        <span>Total Characters: <span id="charCount">0</span></span>
+        <span>Remaining: <span id="charRemaining">50</span></span>
+    </div>
+</div>
+
+<script>
+    const maxChars = 50;
+    
+    function countCharacters() {
+        const input = document.getElementById("myInput");
+        const charCount = document.getElementById("charCount");
+        const charRemaining = document.getElementById("charRemaining");
+
+        const currentLength = input.value.length;
+        charCount.innerHTML = currentLength;
+        charRemaining.innerHTML = maxChars - currentLength;
+    }
+</script>
+
+</body>
+</html>
